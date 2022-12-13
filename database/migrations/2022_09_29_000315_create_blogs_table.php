@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEditorialsTable extends Migration
+class CreateBlogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateEditorialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('editorials', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->string("name", 45);
-            //$table->timestamps();
+            $table->string('title', 255) -> nullable(); //Definir campo con tamaño y titulo determinado
+            $table->string('content')->nullable();
+            $table->timestamps(); //Decha en la que se realizó el registro
         });
     }
 
@@ -27,6 +28,6 @@ class CreateEditorialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('editorials');
+        Schema::dropIfExists('blogs');
     }
 }

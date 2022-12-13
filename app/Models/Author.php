@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Authors extends Model
+class Author extends Model
 {
     use HasFactory;
 
@@ -15,17 +15,17 @@ class Authors extends Model
         "id",
         "name",
         "first_surname",
-        "second_surname"
+        "last_surname"
     ];
 
     public $timestamps = false;
 
-    public function books(){
+    public function authors(){
         return $this->belongsToMany(
-            Book::class, //Table relationship
-            'authors_books', //Table private o intersection
-            "books_id", //from
-            "authors_id" //to
+            Book::class,
+            'authors_books',
+            'authors_id',
+            'books_id'
         );
     }
 }

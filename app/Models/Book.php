@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use PharIo\Manifest\Author;
 
 class Book extends Model
 {
@@ -26,10 +25,20 @@ class Book extends Model
 
     public function authors(){
         return $this->belongsToMany(
-            Author::class, //Table relationship
-            'authors_books', //Table private o intersection
-            "books_id", //from
-            "authors_id" //to
+            Author::class,
+            'authors_books',
+            'books_id',
+            'authors_id'
         );
     }
+
+    public function category(){
+        return $this->hasOne(Category::class, 'id','category_id');
+    }
+
+    public function editorial(){
+        return $this->hasOne(Editorial::class,'id','editorial_id');
+    }
+
+
 }

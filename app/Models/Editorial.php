@@ -9,7 +9,7 @@ class Editorial extends Model
 {
     use HasFactory;
 
-    protected $table = "editorial";
+    protected $table = "editorials";
 
     protected $fillable = [
         "id",
